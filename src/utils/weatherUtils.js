@@ -1,13 +1,27 @@
-export const getWeatherBackground =(condition)=>{
-    if(!condition) return "from-blue-400 to blue-600";
+export const getWeatherBackground = (condition) => {
+    if (!condition) return "from-sky-500 via-blue-500 to-indigo-600";
+
     const c = condition.toLowerCase();
-    if (c.includes("clear")) return ("from-amber-300 to-orange-400");
-    if (c.includes("cloud")) return "from-gray-400 to-gray-600";
-    if (c.includes("rain") || c.includes("drizzle")) return "from-blue-600 to-indigo-800";
-    if (c.includes("thunder")) return "from-gray-700 to-gray-900";
-    if (c.includes("snow")) return "from-blue-100 to-blue-300";
-    if (c.includes("mist") || c.includes("fog")) return "from-gray-300 to-gray-500";
-    return "from-blue-400 to-blue-600";
+
+    if (c.includes("clear"))
+        return "from-yellow-300 via-orange-400 to-pink-500"; // warm sunny vibe
+
+    if (c.includes("cloud"))
+        return "from-slate-400 via-slate-500 to-slate-700"; // soft cloudy feel
+
+    if (c.includes("rain") || c.includes("drizzle"))
+        return "from-blue-700 via-indigo-700 to-purple-800"; // deep rainy mood
+
+    if (c.includes("thunder"))
+        return "from-gray-800 via-purple-900 to-black"; // intense storm
+
+    if (c.includes("snow"))
+        return "from-cyan-100 via-blue-200 to-indigo-300"; // icy fresh
+
+    if (c.includes("mist") || c.includes("fog"))
+        return "from-gray-200 via-slate-300 to-gray-400"; // foggy fade
+
+    return "from-sky-500 via-blue-500 to-indigo-600";
 };
 export const getWeatherEmoji = (condition) => {
   if (!condition) return "🌤️";

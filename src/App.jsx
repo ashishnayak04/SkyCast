@@ -33,18 +33,20 @@ export default function App() {
   const currentCity = weather?.name;
 
   return (
-    <div className={`min-h-screen transition-all duration-700 ${
-      darkMode ? "bg-gray-900" : `bg-gradient-to-br ${bg}`
-    }`}>
+    <div className={`min-h-screen transition-all duration-700 ${darkMode ? "bg-slate-950 text-slate-100" : `bg-gradient-to-br ${bg} text-slate-900`
+      }`}>
       <div className="max-w-3xl mx-auto px-4 py-10 space-y-6">
 
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-white">Weather Dashboard</h1>
-            <p className="text-white/60 text-xs mt-0.5">Real-time weather for any city</p>
+            <h1 className={`text-3xl font-bold tracking-tight ${darkMode ? "text-white" : "text-white drop-shadow-md"}`}>SkyCast</h1>
+            <p className={`text-sm mt-1 ${darkMode ? "text-slate-400" : "text-white/80 font-medium drop-shadow-sm"}`}>Real-time weather for any city</p>
           </div>
           <button onClick={() => setDarkMode(d => !d)}
-            className="flex items-center gap-2 px-4 py-2 bg-white/15 hover:bg-white/25 text-white rounded-xl border border-white/25 text-sm transition-all">
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-all shadow-sm hover:scale-105 active:scale-95 ${darkMode
+                ? "bg-slate-800/50 hover:bg-slate-800 border-slate-700 text-slate-200"
+                : "bg-white/20 hover:bg-white/30 backdrop-blur-md border-white/40 text-white shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+              }`}>
             {darkMode ? "☀️ Light" : "🌙 Dark"}
           </button>
         </div>
@@ -62,14 +64,15 @@ export default function App() {
           <div className="flex items-center justify-between">
             <button
               onClick={() => isFavourite(currentCity) ? removeFavourite(currentCity) : addFavourite(currentCity)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-sm transition-all
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-all shadow-sm hover:scale-105 active:scale-95
                 ${isFavourite(currentCity)
-                  ? "bg-white/30 border-white/50 text-white"
-                  : "bg-white/10 border-white/25 text-white/80 hover:bg-white/20"}`}>
+                  ? (darkMode ? "bg-blue-500/20 border-blue-500/50 text-blue-400" : "bg-white/40 backdrop-blur-md border-white/60 text-white shadow-[0_4px_30px_rgba(0,0,0,0.1)]")
+                  : (darkMode ? "bg-slate-800/50 border-slate-700 text-slate-300 hover:bg-slate-800" : "bg-white/20 backdrop-blur-md border-white/40 text-white hover:bg-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)]")}`}>
               {isFavourite(currentCity) ? "📌 Pinned" : "📍 Pin city"}
             </button>
             <button onClick={() => setUnit(u => u === "C" ? "F" : "C")}
-              className="px-4 py-2 bg-white/15 hover:bg-white/25 text-white rounded-xl border border-white/25 text-sm font-medium transition-all">
+              className={`px-4 py-2 rounded-xl border text-sm font-medium transition-all shadow-sm hover:scale-105 active:scale-95 ${darkMode ? "bg-slate-800/50 hover:bg-slate-800 border-slate-700 text-slate-300" : "bg-white/20 hover:bg-white/30 backdrop-blur-md border-white/40 text-white shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+                }`}>
               Switch to °{unit === "C" ? "F" : "C"}
             </button>
           </div>
@@ -77,8 +80,8 @@ export default function App() {
 
         {loading && (
           <div className="text-center py-12">
-            <div className="text-5xl animate-bounce">🌍</div>
-            <p className="text-white/70 mt-3 text-sm">Fetching weather...</p>
+            <div className="text-5xl animate-bounce drop-shadow-lg">🌍</div>
+            <p className={`mt-4 text-sm font-medium ${darkMode ? "text-slate-400" : "text-white drop-shadow-md"}`}>Fetching weather...</p>
           </div>
         )}
 
@@ -104,8 +107,8 @@ export default function App() {
 
         {!weather && !loading && !error && (
           <div className="text-center py-16">
-            <div className="text-6xl mb-4">🌤️</div>
-            <p className="text-white/60 text-sm">Search for a city to get started</p>
+            <div className="text-7xl mb-6 drop-shadow-lg animate-pulse">🌤️</div>
+            <p className={`text-base font-medium ${darkMode ? "text-slate-400" : "text-white drop-shadow-md"}`}>Search for a city to get started</p>
           </div>
         )}
 

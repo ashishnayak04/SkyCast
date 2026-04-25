@@ -37,8 +37,8 @@ const SunCard = ({ weather }) => {
   const sunY = cy - r * Math.sin(progressAngle);
 
   return (
-    <div className="bg-white/15 backdrop-blur border border-white/25 rounded-2xl p-5 text-white">
-      <h3 className="text-sm font-medium text-white/70 mb-4">Sunrise & Sunset</h3>
+    <div className="bg-white/20 dark:bg-slate-800/40 backdrop-blur-xl border border-white/40 dark:border-slate-600 rounded-3xl p-6 text-white dark:text-slate-100 shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+      <h3 className="text-sm font-semibold tracking-wide text-white/80 dark:text-slate-400 uppercase mb-6">Sunrise & Sunset</h3>
 
       <div className="flex justify-center mb-4">
         <svg width="320" height="110" viewBox="0 0 320 110">
@@ -73,28 +73,28 @@ const SunCard = ({ weather }) => {
       </div>
 
       <div className="grid grid-cols-3 gap-3 text-center">
-        <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-xs text-white/50 mb-1">🌅 Sunrise</p>
-          <p className="text-base font-medium">{formatTime(sunrise, tz)}</p>
+        <div className="bg-white/20 dark:bg-slate-700/50 rounded-2xl p-3 border border-white/10 dark:border-slate-600 shadow-sm hover:-translate-y-1 transition-transform">
+          <p className="text-xs text-white/70 dark:text-slate-400 mb-1 font-medium">🌅 Sunrise</p>
+          <p className="text-base font-bold text-white dark:text-slate-200">{formatTime(sunrise, tz)}</p>
         </div>
-        <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-xs text-white/50 mb-1">☀️ Daylight</p>
-          <p className="text-base font-medium">{getDaylightDuration(sunrise, sunset)}</p>
+        <div className="bg-white/20 dark:bg-slate-700/50 rounded-2xl p-3 border border-white/10 dark:border-slate-600 shadow-sm hover:-translate-y-1 transition-transform">
+          <p className="text-xs text-white/70 dark:text-slate-400 mb-1 font-medium">☀️ Daylight</p>
+          <p className="text-base font-bold text-white dark:text-slate-200">{getDaylightDuration(sunrise, sunset)}</p>
         </div>
-        <div className="bg-white/10 rounded-xl p-3">
-          <p className="text-xs text-white/50 mb-1">🌇 Sunset</p>
-          <p className="text-base font-medium">{formatTime(sunset, tz)}</p>
+        <div className="bg-white/20 dark:bg-slate-700/50 rounded-2xl p-3 border border-white/10 dark:border-slate-600 shadow-sm hover:-translate-y-1 transition-transform">
+          <p className="text-xs text-white/70 dark:text-slate-400 mb-1 font-medium">🌇 Sunset</p>
+          <p className="text-base font-bold text-white dark:text-slate-200">{formatTime(sunset, tz)}</p>
         </div>
       </div>
 
-      <div className="mt-4">
-        <div className="flex justify-between text-xs text-white/40 mb-1">
+      <div className="mt-5">
+        <div className="flex justify-between text-xs text-white/70 dark:text-slate-400 mb-1.5 font-medium">
           <span>Day progress</span>
           <span>{progress < 100 && progress > 0 ? `${progress}%` : progress === 0 ? "Before sunrise" : "After sunset"}</span>
         </div>
-        <div className="w-full bg-white/10 rounded-full h-1.5">
+        <div className="w-full bg-black/10 dark:bg-slate-900/50 rounded-full h-2 shadow-inner">
           <div
-            className="h-1.5 rounded-full bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-700"
+            className="h-2 rounded-full bg-gradient-to-r from-amber-300 to-orange-400 transition-all duration-1000 shadow-sm"
             style={{ width: `${progress}%` }}
           />
         </div>

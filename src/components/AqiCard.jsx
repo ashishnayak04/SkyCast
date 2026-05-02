@@ -14,9 +14,9 @@ const AqiCard = ({ aqi }) => {
 
   return (
     <div className="bg-white/20 dark:bg-slate-800/40 backdrop-blur-xl border border-white/40 dark:border-slate-600 rounded-3xl p-6 text-white dark:text-slate-100 shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <h3 className="text-sm font-semibold tracking-wide text-white/80 dark:text-slate-400 uppercase">Air Quality Index</h3>
-        <span className={`text-xs font-bold px-4 py-1.5 rounded-full border shadow-sm ${level.color}`}>
+        <span className={`text-xs font-bold px-4 py-1.5 rounded-full border shadow-sm whitespace-nowrap ${level.color}`}>
           {level.label}
         </span>
       </div>
@@ -25,7 +25,7 @@ const AqiCard = ({ aqi }) => {
       </div>
 
       <p className="text-white/80 dark:text-slate-300 text-sm mb-5 font-medium">{level.desc}</p>
-      <div className="grid grid-cols-4 gap-3 text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
         {[["PM2.5", pm2_5], ["PM10", pm10], ["NO₂", no2], ["O₃", o3]].map(([name, val]) => (
           <div key={name} className="bg-white/20 dark:bg-slate-700/50 rounded-2xl p-3 border border-white/10 dark:border-slate-600 hover:-translate-y-1 transition-transform shadow-sm">
             <p className="text-white/70 dark:text-slate-400 text-xs font-medium">{name}</p>

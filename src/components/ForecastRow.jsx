@@ -5,7 +5,7 @@ const ForecastRow = ({ forecast, unit }) => {
   const days = groupForecastByDay(forecast.list);
 
   return (
-    <div className="grid grid-cols-5 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3">
       {days.map((day) => {
         const min = unit === "C" ? day.min : celsiusToFahrenheit(day.min);
         const max = unit === "C" ? day.max : celsiusToFahrenheit(day.max);

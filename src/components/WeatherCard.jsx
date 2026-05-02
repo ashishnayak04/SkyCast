@@ -7,12 +7,12 @@ const WeatherCard = ({ weather, unit }) => {
 
   return (
     <div className="bg-white/20 dark:bg-slate-800/40 backdrop-blur-xl border border-white/40 dark:border-slate-600 rounded-3xl p-8 text-white dark:text-slate-100 shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-      <div className="flex justify-between items-start">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight drop-shadow-sm">{weather.name}, {weather.sys.country}</h2>
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+        <div className="break-words w-full">
+          <h2 className="text-3xl font-bold tracking-tight drop-shadow-sm leading-tight">{weather.name}, {weather.sys.country}</h2>
           <p className="text-white/80 dark:text-slate-400 text-sm mt-1.5 capitalize font-medium">{weather.weather[0].description}</p>
         </div>
-        <span className="text-6xl drop-shadow-md hover:scale-110 transition-transform cursor-default">{emoji}</span>
+        <span className="text-6xl drop-shadow-md hover:scale-110 transition-transform cursor-default flex-shrink-0">{emoji}</span>
       </div>
       <div className="mt-4">
         <span className="text-8xl font-bold tracking-tighter drop-shadow-lg">{temp}°<span className="text-5xl font-medium text-white/80 dark:text-slate-400 ml-1">{unit}</span></span>
